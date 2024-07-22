@@ -17,21 +17,21 @@ while True:
     # Get the sending timestamp
     sendTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    # Send the data to Arduino
-    s.write(bytes(str(timesBlink),"utf-8"))
-    
     print(f"{sendTime} Send >>> {timesBlink} blink times")
     
-    
+    # Send the data to Arduino
+    s.write(bytes(str(timesBlink),"utf-8"))
+    time.sleep(timesBlink)
     # RECEIVING STAGE
+    
     # Receive the sleep time from Arduino
     sleepTime = s.readline().decode("utf-8").strip()
-    
     # Receive timestamp
     recvTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
     print(f"{recvTime} Receive <<< {sleepTime} sleeping seconds")
     
+    
+   
     # Sleeping stage
     sleepTime = int(sleepTime)
     time.sleep(sleepTime)
@@ -43,5 +43,4 @@ while True:
     
     print("=" * 10)
     print()
-    
-    
+   
