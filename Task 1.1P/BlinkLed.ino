@@ -13,13 +13,13 @@ void loop()
   for (int i = 0 ; i < timeBlink ; i++)
   {
     digitalWrite(PinLed,HIGH);
-    delay(1000);
+    delay(500);
     digitalWrite(PinLed,LOW);
-    delay(1000);
+    delay(500);
   }
   sleepTime = random(1,10);
 
   // Send data to serial
   Serial.println(sleepTime);
-
+  Serial.flush();
 }
